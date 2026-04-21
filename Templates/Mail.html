@@ -91,20 +91,17 @@
 
             <main class="main-content">
                 <div class="toolbar">
-                <div class="toolbar-left">
-                    <button class="back">←</button>
-                    <button class="toolbar-btn">⋯</button>
+                    <div class="toolbar-left">
+                        <button id="back">←</button>
+                        <button class="toolbar-btn">⋯</button>
+                    </div>
                 </div>
-                <div class="toolbar-right">
-                    <span class="page-info"></span>
-                    <button class="toolbar-btn">&lt;</button>
-                    <button class="toolbar-btn">&gt;</button>
+                <div class="email-list">
+                    <h1 id="mail-subject"></h1>
+                    <span><h2 id="mail-sender"></h2> <p id="mail-date"></p></span>
+                    <p id="mail-body"></p>
                 </div>
-            </div>
-            <div class="email-list">
-                <h1 id="mail-subject"></h1>
-                <span><h2 id="mail-sender"></h2> <p id="mail-date"></p></span>
-            </div>
+            </main>
         </div>
     </div>
     <script src="../JS/Mail.js"></script>
