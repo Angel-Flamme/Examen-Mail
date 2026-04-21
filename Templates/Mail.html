@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="nom-mail"></title>
+    <link rel="stylesheet" href="../CSS/Acceuil_Mail.css">
+    <link rel="stylesheet" href="../CSS/Mail.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+                <span class="gmail-title">Mail</span>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher dans la messagerie" class="search-input">
+                    <button class="search-button">🔍</button>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-icon">⚙️</div>
+                <div class="header-icon">?</div>
+                <div class="profile">R</div>
+            </div>
+        </header>
+
+        <div class="content">
+            <aside class="sidebar" id="sidebar">
+                <button class="compose-btn">✏️ Nouveau message</button>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-item active">
+                        <span class="nav-icon">📥</span>
+                        <span class="nav-text">Boîte de réception</span>
+                        <span class="nav-count"></span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">⭐</span>
+                        <span class="nav-text">Messages Suivis</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">🕔</span>
+                        <span class="nav-text">En Attente</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">📤</span>
+                        <span class="nav-text">Messages Envoyés</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">📝</span>
+                        <span class="nav-text">Brouillons</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">🛍️</span>
+                        <span class="nav-text">Achats</span>
+                    </a>
+                    <button class="nav-item" id="toggle">
+                            <span class="nav-icon" id="toggle-icon">▼</span>
+                            <span class="nav-text">Plus</span>
+                    </button>
+                    <div id="hidden" class="hidden">
+                        <a href="#" class="nav-item">
+                            <span class="nav-icon fleche">🔰</span>
+                            <span class="nav-text">Important</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <span class="nav-icon barre">🚀🕔</span>
+                            <span class="nav-text">Planifié</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <span class="nav-icon">📩</span>
+                            <span class="nav-text">Tous les messages</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <span class="nav-icon barre">🚫</span>
+                            <span class="nav-text">Spam</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <span class="nav-icon">🗑️</span>
+                            <span class="nav-text">Corbeille</span>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <span class="nav-icon">📧</span>
+                            <span class="nav-text">Gérer les abonnements</span>
+                        </a>
+                    </div>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <div class="toolbar">
+                <div class="toolbar-left">
+                    <button class="back">←</button>
+                    <button class="toolbar-btn">⋯</button>
+                </div>
+                <div class="toolbar-right">
+                    <span class="page-info"></span>
+                    <button class="toolbar-btn">&lt;</button>
+                    <button class="toolbar-btn">&gt;</button>
+                </div>
+            </div>
+            <div class="email-list">
+                <h1 id="mail-subject"></h1>
+                <span><h2 id="mail-sender"></h2> <p id="mail-date"></p></span>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/Mail.js"></script>
+</body>
+</html>

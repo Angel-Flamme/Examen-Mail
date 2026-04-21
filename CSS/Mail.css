@@ -1,0 +1,14 @@
+.back {
+    font-size: 24px;
+    padding: 8px;
+    border-radius: 30px;
+}
+
+span {
+    display: flex;
+    flex-direction: row;
+}
+
+#mail-date {
+    
+}
