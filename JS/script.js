@@ -5,98 +5,97 @@ var nbrMail = document.getElementsByClassName("nav-count")[0];
 var composeBtn = document.getElementsByClassName("compose-btn")[0];
 var nvMail = document.getElementById("nv-mail");
 
-//Cette partie Bugge, à corriger
-document.addEventListener('DOMContentLoaded', function() {
-    const selectedId = localStorage.getItem("openedMailId");
-    const allEmails = JSON.parse(localStorage.getItem("allEmails"));
-    const back = document.getElementById('back');
-    if (selectedId && allEmails) {
-        var emails = allEmails.find(m => m.id == selectedId);
-    } else {
-        var emails = [
-            {
-                id: 1,
-                sender: 'Google',
-                subject: 'Sécurité de votre compte Google',
-                snippet: 'Nous avons détecté une activité inhabituelle sur votre compte...',
-                date: '14:30',
-                unread: true,
-                starred: false,
-                clicable: false
-            },
-            {
-                id: 2,
-                sender: 'Amazon',
-                subject: 'Votre commande a été expédiée',
-                snippet: 'Votre commande #123456789 a été expédiée et arrivera...',
-                date: 'Hier',
-                unread: true,
-                starred: true,
-                clicable: false
-            },
-            {
-                id: 3,
-                sender: 'LinkedIn',
-                subject: 'Nouvelles connexions cette semaine',
-                snippet: 'Découvrez qui a consulté votre profil récemment...',
-                date: 'Mar 15',
-                unread: false,
-                starred: false,
-                clicable: false
-            },
-            {
-                id: 4,
-                sender: 'GitHub',
-                subject: 'Nouveau dépôt créé',
-                snippet: 'Vous avez créé un nouveau dépôt public...',
-                date: 'Mar 14',
-                unread: false,
-                starred: false,
-                clicable: false
-            },
-            {
-                id: 5,
-                sender: 'Netflix',
-                subject: 'Votre facture mensuelle',
-                snippet: 'Votre paiement de 15,99 € a été traité avec succès...',
-                date: 'Mar 13',
-                unread: true,
-                starred: false,
-                clicable: false
-            },
-            {
-                id: 6,
-                sender: 'Facebook',
-                subject: 'Mise à jour de vos amis',
-                snippet: 'Marie et 5 autres personnes ont mis à jour leur statut...',
-                date: 'Mar 12',
-                unread: false,
-                starred: false,
-                clicable: false
-            },
-            {
-                id: 7,
-                sender: 'Twitter',
-                subject: 'Tendances du moment',
-                snippet: 'Découvrez les sujets les plus discutés...',
-                date: 'Mar 11',
-                unread: false,
-                starred: true,
-                clicable: false
-            },
-            {
-                id: 8,
-                sender: 'YouTube',
-                subject: 'Nouvelles vidéos recommandées',
-                snippet: 'Basé sur ce que vous avez regardé récemment...',
-                date: 'Mar 10',
-                unread: true,
-                starred: false,
-                clicable: false
-            }
-        ];
-    }
-});
+const storedEmails = localStorage.getItem("allEmails");
+var emails;
+
+if (storedEmails) {
+    emails = JSON.parse(storedEmails);
+} else {
+    emails = [
+        {
+            id: 1,
+            sender: 'Google',
+            subject: 'Sécurité de votre compte Google',
+            snippet: 'Nous avons détecté une activité inhabituelle sur votre compte...',
+            date: '14:30',
+            unread: true,
+            starred: false,
+            clicable: false
+        },
+        {
+            id: 2,
+            sender: 'Amazon',
+            subject: 'Votre commande a été expédiée',
+            snippet: 'Votre commande #123456789 a été expédiée et arrivera...',
+            date: 'Hier',
+            unread: true,
+            starred: true,
+            clicable: false
+        },
+        {
+            id: 3,
+            sender: 'LinkedIn',
+            subject: 'Nouvelles connexions cette semaine',
+            snippet: 'Découvrez qui a consulté votre profil récemment...',
+            date: 'Mar 15',
+            unread: false,
+            starred: false,
+            clicable: false
+        },
+        {
+            id: 4,
+            sender: 'GitHub',
+            subject: 'Nouveau dépôt créé',
+            snippet: 'Vous avez créé un nouveau dépôt public...',
+            date: 'Mar 14',
+            unread: false,
+            starred: false,
+            clicable: false
+        },
+        {
+            id: 5,
+            sender: 'Netflix',
+            subject: 'Votre facture mensuelle',
+            snippet: 'Votre paiement de 15,99 € a été traité avec succès...',
+            date: 'Mar 13',
+            unread: true,
+            starred: false,
+            clicable: false
+        },
+        {
+            id: 6,
+            sender: 'Facebook',
+            subject: 'Mise à jour de vos amis',
+            snippet: 'Marie et 5 autres personnes ont mis à jour leur statut...',
+            date: 'Mar 12',
+            unread: false,
+            starred: false,
+            clicable: false
+        },
+        {
+            id: 7,
+            sender: 'Twitter',
+            subject: 'Tendances du moment',
+            snippet: 'Découvrez les sujets les plus discutés...',
+            date: 'Mar 11',
+            unread: false,
+            starred: true,
+            clicable: false
+        },
+        {
+            id: 8,
+            sender: 'YouTube',
+            subject: 'Nouvelles vidéos recommandées',
+            snippet: 'Basé sur ce que vous avez regardé récemment...',
+            date: 'Mar 10',
+            unread: true,
+            starred: false,
+            clicable: false
+        }
+    ]
+    localStorage.setItem("allEmails", JSON.stringify(emails));
+};
+
 
 let countNonLus = emails.filter(email => email.unread).length;
 var count = Object.keys(emails).length;
@@ -210,25 +209,36 @@ function addSendListener() {
     var to = document.getElementById("input-to").value;
     var subject = document.getElementById("input-subject").value;
     var body = document.getElementById("input-body").value;
-    var attachFile = document.getElementById("attach-file").files[0];
-    var date = new Date().getHours() + ":" + new Date().getMinutes();
+    var fileInput = document.getElementById("attach-file");
+    var date = new Date().getHours() + ":" + (new Date().getMinutes() < 10 ? '0' : '') + new Date().getMinutes();
 
-    console.log("Destinataire :", to);
-    console.log("Objet :", subject);
-    console.log("Corp de message :", body);
-    emails.unshift({
-        id: emails.length + 1,
-        sender: "Vous",
-        subject: subject,
-        snippet: body,
-        date: date,
-        starred: false,
-        clicable: true,
-        unread: true
-    });
-    renderEmails();
-    nvMail.classList.remove("visible");
-    let nouveauxNonLus = emails.filter(m => m.unread).length;
-    document.querySelector(".nav-count").innerHTML = nouveauxNonLus;
+    const processMail = (imageData = null) => {
+        emails.unshift({
+            id: emails.length + 1,
+            sender: "Vous",
+            subject: subject,
+            snippet: body,
+            date: date,
+            starred: false,
+            clicable: true,
+            unread: true,
+            image: imageData
+        });
+        
+        localStorage.setItem("allEmails", JSON.stringify(emails));
+        renderEmails();
+        nvMail.classList.remove("visible");
+        document.querySelector(".nav-count").innerHTML = emails.filter(m => m.unread).length;
+    };
+
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            processMail(e.target.result);
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    } else {
+        processMail();
+    }
   });
 }

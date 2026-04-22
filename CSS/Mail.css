@@ -4,12 +4,34 @@
     border-radius: 30px;
 }
 
-span {
-    display: flex;
-    flex-direction: row;
+#mail-date {
+    margin-left: auto;
+    margin-right: 50px;
+    font-size: 1.2em;
+    color: #5f6368;
 }
 
-#mail-date {
-    text-align: right;
-    margin-left: 950px;
+#mail-subject {
+    font-size: 50px;
+    padding: 10px;
+}
+
+#send {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+#mail-body {
+    display: flex;
+    padding: 10px;
+}
+
+#pers {
+    border-radius: 30px;
+}
+
+#mail-image {
+    display: none;
+    max-width: 100%;
 }
