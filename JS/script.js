@@ -4,6 +4,7 @@ var page = document.getElementsByClassName("page-info")[0];
 var nbrMail = document.getElementsByClassName("nav-count")[0];
 var composeBtn = document.getElementsByClassName("compose-btn")[0];
 var nvMail = document.getElementById("nv-mail");
+var resetBtn = document.getElementsByClassName("reset")[0];
 
 const storedEmails = localStorage.getItem("allEmails");
 var emails;
@@ -242,3 +243,11 @@ function addSendListener() {
     }
   });
 }
+
+addEventListener("click", function(e) {
+    if (e.target.classList.contains("reset")) {
+        localStorage.removeItem("allEmails");
+        localStorage.removeItem("openedMailId");
+        location.reload();
+    }
+});

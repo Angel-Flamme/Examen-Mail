@@ -105,6 +105,47 @@ body {
     align-items: center;
 }
 
+.reset {
+    position: relative;
+    font-size: 14px;
+    color: #ff0000;
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    display: inline-block;
+}
+
+.alert {
+    visibility: hidden; 
+    background-color: #222;
+    color: #ff0000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 10;
+    bottom: -110%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+}
+
+.reset:hover .alert {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.reset:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+
 .header-icon {
     font-size: 20px;
     margin-left: 16px;
